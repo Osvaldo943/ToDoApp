@@ -1,7 +1,12 @@
 import React from "react";
+import {
+  ActivityIndicator,
+  StyleSheet,
+  Text,
+  View,
+  StatusBar,
+} from "react-native";
 import { ThemeProvider } from "styled-components/native"; // Import corrigido
-import { StatusBar } from "expo-status-bar";
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 
 import {
   useFonts,
@@ -12,8 +17,8 @@ import {
 
 import theme from "./src/theme";
 
-import Groups from "./src/screens/tasks";
 import Loading from "./src/screens/loading";
+import Tasks from "./src/screens/tasks";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -24,7 +29,12 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      {fontsLoaded ? <Loading /> : <Loading />}
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent
+      />
+      {fontsLoaded ? <Tasks /> : <Loading />}
     </ThemeProvider>
   );
 }
