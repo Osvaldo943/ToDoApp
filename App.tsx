@@ -19,6 +19,7 @@ import theme from "./src/theme";
 
 import Loading from "./src/screens/loading";
 import Tasks from "./src/screens/tasks";
+import AddTask from "./src/screens/addTask";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -34,7 +35,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {fontsLoaded ? <Tasks /> : <Loading />}
+      {fontsLoaded ? <AddTask /> : <Loading />}
     </ThemeProvider>
   );
 }
