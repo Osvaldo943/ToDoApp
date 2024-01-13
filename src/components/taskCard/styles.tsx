@@ -1,5 +1,8 @@
 import styled from "styled-components/native";
 
+export const Container = styled.View`
+  margin: 5px 0;
+`;
 export const Task = styled.View`
   flex-direction: row;
   align-items: center;
@@ -12,4 +15,5 @@ export const TaskText = styled.Text`
   color: ${({ theme }) => theme.COLORS.WHITE};
   font-size: ${({ theme }) => theme.FONT_SIZES.SM}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
+  text-decoration: line-through;
 `;

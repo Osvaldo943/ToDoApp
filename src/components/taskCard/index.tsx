@@ -1,17 +1,38 @@
 import { View, TouchableOpacity } from "react-native";
 import { CheckBox } from "react-native-elements";
 
-import { Task, TaskText } from "./styles";
+import { Container, Task, TaskText } from "./styles";
+import { useState } from "react";
 
-export const TaskCard: React.FC = () => {
+interface TaskCardProps {
+  title: string;
+}
+
+export const TaskCard: React.FC<TaskCardProps> = ({ title, ...rest }) => {
+  const [checked, setChecked] = useState(false);
   return (
-    <View>
+    <Container>
       <TouchableOpacity>
         <Task>
-          <CheckBox />
-          <TaskText>Tarefa 1</TaskText>
+          <CheckBox
+            checked={checked}
+            onPress={() => setChecked(!checked)}
+            checkedColor="#FF9900"
+            containerStyle={{
+              backgroundColor: "transparent",
+              borderWidth: 0,
+            }}
+          />
+          <TaskText
+            style={{
+              textDecorationLine: checked ? "line-through" : "none",
+              color: checked ? "#FF9900" : "white",
+            }}
+          >
+            {title}
+          </TaskText>
         </Task>
       </TouchableOpacity>
-    </View>
+    </Container>
   );
 };
