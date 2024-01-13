@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 export const Container = styled.View`
   width: 100%;
   height: 200px;
-  padding: 0 16px;
+  padding-left: 16px;
 `;
 export const CategoriesContainer = styled.View`
   width: 100%;
