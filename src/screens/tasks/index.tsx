@@ -12,9 +12,10 @@ import { Container, TaskList, Title } from "./styles";
 
 import theme from "src/theme";
 
+import { Header } from "../../components/header";
 import { TaskCard } from "../../components/taskCard";
 import { PlusTaskBtn } from "../../components/plusTaskBtn";
-import { Header } from "../../components/header";
+import { Categories } from "../../components/categories";
 
 export default function Tasks() {
   const [tasks, setTasks] = useState([
@@ -29,6 +30,7 @@ export default function Tasks() {
     <>
       <Header />
       <Container>
+        <Categories />
         <TaskList>
           <Title>Minhas tarefas</Title>
           <ScrollView>

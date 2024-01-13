@@ -12,7 +12,6 @@ export const Task = styled.View`
 `;
 
 export const TaskText = styled.Text`
-  color: ${({ theme }) => theme.COLORS.WHITE};
   font-size: ${({ theme }) => theme.FONT_SIZES.SM}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
   text-decoration: line-through;

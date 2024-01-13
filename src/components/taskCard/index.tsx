@@ -26,7 +26,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ title, ...rest }) => {
           <TaskText
             style={{
               textDecorationLine: checked ? "line-through" : "none",
-              color: checked ? "#FF9900" : "white",
+              color: checked ? "#FF9900" : "#d9d9d9",
             }}
           >
             {title}

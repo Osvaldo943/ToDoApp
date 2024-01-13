@@ -15,7 +15,7 @@ export const TaskList = styled.View`
 `;
 
 export const Title = styled.Text`
-  color: ${({ theme }) => theme.COLORS.WHITE};
+  color: ${({ theme }) => theme.COLORS.GRAY_LIGHT};
   font-size: ${({ theme }) => theme.FONT_SIZES.MD}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
 `;
