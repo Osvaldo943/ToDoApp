@@ -1,20 +1,5 @@
 import styled from "styled-components/native";
 
-export const Container = styled.View`
-  flex: 1;
-  background: ${({ theme }) => theme.COLORS.BLACK};
-  align-items: center;
-  justify-content: center;
-`;
-
-export const TaskList = styled.View`
-  flex: 1;
-  width: 100%;
-  flex-direction: column;
-  margin-top: 40px;
-  padding: 16px;
-`;
-
 export const Task = styled.View`
   flex-direction: row;
   align-items: center;

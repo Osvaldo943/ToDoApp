@@ -1,10 +1,20 @@
-import { ActivityIndicator, View, Text } from "react-native";
+import { ActivityIndicator, View, Text, TouchableOpacity } from "react-native";
+import { CheckBox } from "react-native-elements";
 
-import { ActivityIndicatorContainer, Container, Logo } from "./styles";
+import { Container, TaskList, Task, TaskText } from "./styles";
+
 import theme from "src/theme";
+
+import { TaskCard } from "../../components/taskCard";
 
 export default function Tasks() {
   const goToTasks = () => {};
 
-  return <Container></Container>;
+  return (
+    <Container>
+      <TaskList>
+        <TaskCard />
+      </TaskList>
+    </Container>
+  );
 }

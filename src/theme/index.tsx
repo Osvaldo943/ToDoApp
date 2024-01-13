@@ -1,7 +1,7 @@
 const theme = {
   COLORS: {
     ABU_ABU: "#F6F4FE",
-    BLACK: "#181A20",
+    BLACK: "#121214",
     BLUE: "#104EFF",
     BLUE_S: "#246BFD14",
     BLUE_TUA: "#210F7D",
@@ -11,6 +11,7 @@ const theme = {
     GRAY_MEDIUM: "#d9d9d9",
     GRAY: "#747272",
     GRAY_LIGHT: "#9D9D9D",
+    GRAY_500: "#29292E",
     YELLOW: "#FF9900",
   },
   FONT_FAMILY: {
