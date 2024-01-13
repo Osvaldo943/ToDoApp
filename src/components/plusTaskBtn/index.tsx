@@ -1,11 +1,14 @@
+import { TouchableOpacity } from "react-native";
 import { Container, Button, Text } from "./styles";
 
 export const PlusTaskBtn: React.FC = () => {
   return (
     <Container>
-      <Button>
-        <Text>+</Text>
-      </Button>
+      <TouchableOpacity>
+        <Button>
+          <Text>+</Text>
+        </Button>
+      </TouchableOpacity>
     </Container>
   );
 };
