@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { SafeAreaFrameContext } from "react-native-safe-area-context";
 
 export const Container = styled.View`
   flex: 1;

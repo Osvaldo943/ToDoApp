@@ -35,7 +35,7 @@ export default function Tasks() {
           <Title>Minhas tarefas</Title>
           <ScrollView>
             {tasks.map((item, index) => (
-              <TaskCard key={index} title={item} />
+              <TaskCard key={index} pos={index} title={item} />
             ))}
           </ScrollView>
         </TaskList>

@@ -1,18 +1,31 @@
+import { useNavigation, NavigationProp } from "@react-navigation/core";
 import { View, TouchableOpacity } from "react-native";
 import { CheckBox } from "react-native-elements";
 
 import { Container, Task, TaskText } from "./styles";
 import { useState } from "react";
 
+import { RootParamlist } from "@src/@types/navigaton";
 interface TaskCardProps {
   title: string;
+  pos?: number;
 }
 
-export const TaskCard: React.FC<TaskCardProps> = ({ title, ...rest }) => {
+export const TaskCard: React.FC<TaskCardProps> = ({
+  pos = 0,
+  title,
+  ...rest
+}) => {
   const [checked, setChecked] = useState(false);
+
+  const navigation = useNavigation<NavigationProp<RootParamlist>>();
+
+  const handleTaskDetails = () => {
+    navigation.navigate("taskDetails", { idTask: pos });
+  };
   return (
     <Container>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={handleTaskDetails}>
         <Task>
           <CheckBox
             checked={checked}

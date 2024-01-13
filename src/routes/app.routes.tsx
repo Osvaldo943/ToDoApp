@@ -10,12 +10,10 @@ const { Screen, Navigator } = createStackNavigator();
 
 export default function AppRoutes() {
   return (
-    <NavigationContainer>
-      <Navigator>
-        <Screen name="home" component={Tasks} />
-        <Screen name="add-task" component={AddTask} />
-        <Screen name="task-details" component={TaskDetails} />
-      </Navigator>
-    </NavigationContainer>
+    <Navigator screenOptions={{ headerShown: false }}>
+      <Screen name="home" component={Tasks} />
+      <Screen name="addTask" component={AddTask} />
+      <Screen name="taskDetails" component={TaskDetails} />
+    </Navigator>
   );
 }

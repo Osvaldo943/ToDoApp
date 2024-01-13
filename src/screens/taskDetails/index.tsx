@@ -26,7 +26,7 @@ export default function TaskDetails() {
     "Tenho que fazer um bom bolo para o natal porque vai cuiar muito"
   );
 
-  const [isEditing, setIsEditing] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
   const [checked, setChecked] = useState(false);
 
   const handleEditPress = () => {

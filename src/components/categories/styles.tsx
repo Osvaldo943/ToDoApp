@@ -3,12 +3,17 @@ import styled from "styled-components/native";
 export const Container = styled.View`
   width: 100%;
   height: 200px;
-  padding-left: 16px;
 `;
 export const CategoriesContainer = styled.View`
   width: 100%;
   padding: 8px 0;
   flex-direction: row;
+`;
+export const Title = styled.Text`
+  color: ${({ theme }) => theme.COLORS.GRAY_LIGHT};
+  font-size: ${({ theme }) => theme.FONT_SIZES.MD}px;
+  font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
+  margin-left: 16px;
 `;
 export const CategoriesList = styled.View`
   flex-direction: row;
@@ -20,7 +25,8 @@ export const Category = styled.View`
   background-color: ${({ theme }) => theme.COLORS.GRAY_500};
   border-radius: 25px;
   padding: 16px;
-  margin-right: 8px;
+  margin-left: 16px;
+  margin-right: -8px;
 
   justify-content: center;
 
@@ -31,11 +37,6 @@ export const Category = styled.View`
   elevation: 8;
 `;
 export const Text = styled.Text`
-  color: ${({ theme }) => theme.COLORS.GRAY_LIGHT};
-  font-size: ${({ theme }) => theme.FONT_SIZES.MD}px;
-  font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
-`;
-export const Title = styled.Text`
   color: ${({ theme }) => theme.COLORS.GRAY_LIGHT};
   font-size: ${({ theme }) => theme.FONT_SIZES.MD}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
