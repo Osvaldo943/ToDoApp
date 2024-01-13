@@ -20,6 +20,7 @@ import theme from "./src/theme";
 import Loading from "./src/screens/loading";
 import Tasks from "./src/screens/tasks";
 import AddTask from "./src/screens/addTask";
+import TaskDetails from "./src/screens/tastDetails";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -29,13 +30,15 @@ export default function App() {
   });
 
   return (
-    <ThemeProvider theme={theme}>
-      <StatusBar
-        barStyle="light-content"
-        backgroundColor="transparent"
-        translucent
-      />
-      {fontsLoaded ? <AddTask /> : <Loading />}
-    </ThemeProvider>
+    <View style={{ backgroundColor: "#121214", flex: 1 }}>
+      <ThemeProvider theme={theme}>
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor="transparent"
+          translucent
+        />
+        {fontsLoaded ? <TaskDetails /> : <Loading />}
+      </ThemeProvider>
+    </View>
   );
 }
