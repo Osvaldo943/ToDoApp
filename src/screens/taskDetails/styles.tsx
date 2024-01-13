@@ -26,7 +26,6 @@ export const TextInput = styled.TextInput`
   padding: 12px;
   color: ${({ theme }) => theme.COLORS.GRAY_LIGHT};
   border: 1px solid ${({ theme }) => theme.COLORS.GRAY_500};
-  font-size: ${({ theme }) => theme.FONT_SIZES.SM}px;
   border-radius: 18px;
   margin-bottom: 32px;
 `;
@@ -34,7 +33,7 @@ export const TextInputDescription = styled.TextInput`
   width: 100%;
   height: 150px;
   color: ${({ theme }) => theme.COLORS.GRAY_LIGHT};
-  border: 1px solid ${({ theme }) => theme.COLORS.GRAY_500};
+  border: 1px solid ${({ theme }) => theme.COLORS.GRAY_MEDIUM};
   font-size: ${({ theme }) => theme.FONT_SIZES.SM}px;
   padding: 12px;
   border-radius: 25px;
@@ -70,4 +69,27 @@ export const BtnText = styled.Text`
   font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
   font-size: ${({ theme }) => theme.FONT_SIZES.XL}px;
   color: ${({ theme }) => theme.COLORS.BLACK};
+`;
+
+export const ActionsContainer = styled.View`
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 20px;
+  background-color: #29292e;
+  padding-right: 16px;
+  margin-bottom: 20px;
+`;
+export const Row = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const StatusText = styled.Text`
+  font-size: ${({ theme }) => theme.FONT_SIZES.SM}px;
+  margin-left: -16px;
+`;
+
+export const NotePencilContainer = styled.TouchableOpacity`
+  margin-right: 16px;
 `;

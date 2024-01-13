@@ -6,7 +6,9 @@ import {
   View,
   StatusBar,
 } from "react-native";
+
 import { ThemeProvider } from "styled-components/native"; // Import corrigido
+import theme from "./src/theme";
 
 import {
   useFonts,
@@ -15,12 +17,8 @@ import {
   Roboto_700Bold,
 } from "@expo-google-fonts/roboto";
 
-import theme from "./src/theme";
-
+import { Routes } from "./src/routes";
 import Loading from "./src/screens/loading";
-import Tasks from "./src/screens/tasks";
-import AddTask from "./src/screens/addTask";
-import TaskDetails from "./src/screens/tastDetails";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -37,7 +35,7 @@ export default function App() {
           backgroundColor="transparent"
           translucent
         />
-        {fontsLoaded ? <TaskDetails /> : <Loading />}
+        {fontsLoaded ? <Routes /> : <Loading />}
       </ThemeProvider>
     </View>
   );
