@@ -28,15 +28,13 @@ export default function App() {
   });
 
   return (
-    <View style={{ backgroundColor: "#121214", flex: 1 }}>
-      <ThemeProvider theme={theme}>
-        <StatusBar
-          barStyle="light-content"
-          backgroundColor="transparent"
-          translucent
-        />
-        {fontsLoaded ? <Routes /> : <Loading />}
-      </ThemeProvider>
-    </View>
+    <ThemeProvider theme={theme}>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent
+      />
+      {fontsLoaded ? <Routes /> : <Loading />}
+    </ThemeProvider>
   );
 }

@@ -1,5 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRoute } from "@react-navigation/core";
+
 import { View, Text, TouchableOpacity, Touchable } from "react-native";
+import { CheckBox } from "react-native-elements";
+
 import {
   Container,
   TextInputDescription,
@@ -13,21 +17,30 @@ import {
   StatusText,
   NotePencilContainer,
 } from "./styles";
-
-import { CheckBox } from "react-native-elements";
-
 import { NotePencil, Trash } from "phosphor-react-native";
 
 import { Header } from "../../components/header";
 
+type RouteParams = {
+  idTask: number;
+};
+
 export default function TaskDetails() {
-  const [title, setTitle] = useState("Fazer bolo do natal");
+  const route = useRoute();
+
+  const [tasks, setTasks] = useState([
+    "Estudar JavaScript",
+    "Limpar a casa",
+    "Fazer tarefas",
+  ]);
+  const [title, setTitle] = useState("");
   const [description, setDescription] = useState(
     "Tenho que fazer um bom bolo para o natal porque vai cuiar muito"
   );
-
   const [isEditing, setIsEditing] = useState(false);
   const [checked, setChecked] = useState(false);
+
+  const { idTask } = route.params as RouteParams;
 
   const handleEditPress = () => {
     setIsEditing(!isEditing);
@@ -39,6 +52,9 @@ export default function TaskDetails() {
   const handleDescription = (text: string) => {
     setDescription(text);
   };
+  useEffect(() => {
+    setTitle(tasks[idTask]);
+  }, []);
 
   return (
     <>
@@ -61,7 +77,7 @@ export default function TaskDetails() {
                 textDecorationLine: checked ? "line-through" : "none",
               }}
             >
-              {checked ? "Feito" : "Fazer"}
+              {checked ? "Feito" : "Fazer"} {idTask}
             </StatusText>
           </Row>
           <Row>
