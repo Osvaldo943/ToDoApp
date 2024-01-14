@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useRoute } from "@react-navigation/core";
+import { useCallback, useEffect, useState } from "react";
+import { useFocusEffect, useRoute } from "@react-navigation/core";
 
 import { View, Text, TouchableOpacity, Touchable } from "react-native";
 import { CheckBox } from "react-native-elements";
@@ -21,22 +21,20 @@ import { NotePencil, Trash } from "phosphor-react-native";
 
 import { Header } from "../../components/header";
 
+import { TasksGetAll } from "../../storage/tasks/getAllTasks";
+
 type RouteParams = {
   idTask: number;
 };
 
+import { TASK_PROPS } from "../../@types/task";
+
 export default function TaskDetails() {
   const route = useRoute();
 
-  const [tasks, setTasks] = useState([
-    "Estudar JavaScript",
-    "Limpar a casa",
-    "Fazer tarefas",
-  ]);
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState(
-    "Tenho que fazer um bom bolo para o natal porque vai cuiar muito"
-  );
+  const [description, setDescription] = useState("");
+
   const [isEditing, setIsEditing] = useState(false);
   const [checked, setChecked] = useState(false);
 
@@ -52,9 +50,27 @@ export default function TaskDetails() {
   const handleDescription = (text: string) => {
     setDescription(text);
   };
-  useEffect(() => {
-    setTitle(tasks[idTask]);
-  }, []);
+
+  async function fetchAllTasks() {
+    try {
+      const data: TASK_PROPS[] = await TasksGetAll();
+
+      if (data) {
+        console.log("tarefas em detalhes", data);
+        setTitle(data[idTask].title);
+        setDescription(data[idTask].description);
+        setChecked(data[idTask].status);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  useFocusEffect(
+    useCallback(() => {
+      fetchAllTasks();
+    }, [])
+  );
 
   return (
     <>

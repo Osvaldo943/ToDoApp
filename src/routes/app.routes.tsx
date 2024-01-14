@@ -11,7 +11,7 @@ const { Screen, Navigator } = createStackNavigator();
 export default function AppRoutes() {
   return (
     <Navigator screenOptions={{ headerShown: false }}>
-      <Screen name="home" component={Tasks} />
+      <Screen name="tasks" component={Tasks} />
       <Screen name="addTask" component={AddTask} />
       <Screen name="taskDetails" component={TaskDetails} />
     </Navigator>

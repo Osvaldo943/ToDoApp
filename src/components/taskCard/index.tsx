@@ -8,15 +8,17 @@ import { useState } from "react";
 import { RootParamlist } from "@src/@types/navigaton";
 interface TaskCardProps {
   title: string;
+  status: boolean;
   pos?: number;
 }
 
 export const TaskCard: React.FC<TaskCardProps> = ({
   pos = 0,
   title,
+  status,
   ...rest
 }) => {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(status);
 
   const navigation = useNavigation<NavigationProp<RootParamlist>>();
 

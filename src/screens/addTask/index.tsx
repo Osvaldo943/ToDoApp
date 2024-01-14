@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigation, NavigationProp } from "@react-navigation/core";
 import { View, Text, TouchableOpacity } from "react-native";
 import {
   Container,
@@ -10,10 +11,15 @@ import {
   BtnText,
 } from "./styles";
 import { Header } from "../../components/header";
+import { taskCreate } from "../../storage/tasks/taskCreate";
+
+import { RootParamlist } from "../../@types/navigaton";
 
 export default function AddTask() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+
+  const navigation = useNavigation<NavigationProp<RootParamlist>>();
 
   const handleTitle = (text: string) => {
     setTitle(text);
@@ -21,6 +27,12 @@ export default function AddTask() {
   const handleDescription = (text: string) => {
     setDescription(text);
   };
+
+  const handleAddTask = async () => {
+    await taskCreate({ status: false, title: title, description: description });
+    navigation.navigate("tasks");
+  };
+
   return (
     <>
       <Header />
@@ -58,6 +70,7 @@ export default function AddTask() {
                 style={{
                   color: description == "" || title == "" ? "white" : "#121214",
                 }}
+                onPress={handleAddTask}
               >
                 Adicionar +
               </BtnText>
