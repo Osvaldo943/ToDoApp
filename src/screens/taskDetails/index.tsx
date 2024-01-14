@@ -21,7 +21,7 @@ import { NotePencil, Trash } from "phosphor-react-native";
 
 import { Header } from "../../components/header";
 
-import { TasksGetAll } from "../../storage/tasks/getAllTasks";
+import { TasksGetAll } from "../../storage/tasks/taskGetAll";
 
 type RouteParams = {
   idTask: number;
