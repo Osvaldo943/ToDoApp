@@ -1,3 +1,4 @@
+import { NavigationProp, useNavigation } from "@react-navigation/core";
 import { useCallback, useEffect, useState } from "react";
 import { useFocusEffect, useRoute } from "@react-navigation/core";
 
@@ -21,17 +22,21 @@ import { NotePencil, Trash } from "phosphor-react-native";
 
 import { Header } from "../../components/header";
 
-import { TasksGetAll } from "../../storage/tasks/taskGetAll";
-
 type RouteParams = {
   idTask: number;
 };
 
 import { TASK_PROPS } from "../../@types/task";
+
+import { TasksGetAll } from "../../storage/tasks/taskGetAll";
 import { EditOneTask } from "../../storage/tasks/taskEditOne";
 import { EditTaskStatus } from "../../storage/tasks/taskEditStatus";
+import { RemoveTask } from "../../storage/tasks/taskRemoveTask";
+
+import { RootParamlist } from "../../@types/navigaton";
 
 export default function TaskDetails() {
+  const navigation = useNavigation<NavigationProp<RootParamlist>>();
   const route = useRoute();
   const { idTask } = route.params as RouteParams;
 
@@ -71,6 +76,11 @@ export default function TaskDetails() {
     };
     await EditOneTask(idTask, task);
     setIsEditing(false);
+  };
+
+  const handleRemoveTask = async () => {
+    await RemoveTask(idTask);
+    navigation.navigate("tasks");
   };
 
   async function fetchAllTasks() {
@@ -121,7 +131,7 @@ export default function TaskDetails() {
             <NotePencilContainer onPress={handleEditPress}>
               <NotePencil color="#fff" />
             </NotePencilContainer>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={handleRemoveTask}>
               <Trash color="#F75555" />
             </TouchableOpacity>
           </Row>

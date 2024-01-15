@@ -29,7 +29,7 @@ export default function AddTask() {
   };
 
   const handleAddTask = async () => {
-    await taskCreate({ status: true, title: title, description: description });
+    await taskCreate({ status: false, title: title, description: description });
     navigation.navigate("tasks");
   };
 
@@ -71,6 +71,7 @@ export default function AddTask() {
                   color: description == "" || title == "" ? "white" : "#121214",
                 }}
                 onPress={handleAddTask}
+                disabled={!title || !description}
               >
                 Adicionar +
               </BtnText>

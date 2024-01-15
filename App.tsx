@@ -34,7 +34,9 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {fontsLoaded ? <Routes /> : <Loading />}
+      <View style={{ backgroundColor: "#121214", flex: 1 }}>
+        {fontsLoaded ? <Routes /> : <Loading />}
+      </View>
     </ThemeProvider>
   );
 }

@@ -17,6 +17,7 @@ interface TaskCardProps {
   title: string;
   status: boolean;
   pos?: number;
+  onPress: () => void;
 }
 
 export const TaskCard: React.FC<TaskCardProps> = ({

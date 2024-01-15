@@ -35,9 +35,12 @@ export const Categories: React.FC<CategoriesProps> = ({
           <Category>
             <Text>Tu tens</Text>
             <SubTitle>{countAllDoneTasks} Feita(s)</SubTitle>
-            <Cart style={{ backgroundColor: "#121214" }}>
+            <Cart style={{ backgroundColor: "#F75555" }}>
               <CartLine
-                style={{ backgroundColor: "#2D9C73", width: "30%" }}
+                style={{
+                  backgroundColor: "#2D9C73",
+                  width: `${(countAllDoneTasks / countAllTasks) * 100}%`,
+                }}
               ></CartLine>
             </Cart>
           </Category>
@@ -46,7 +49,10 @@ export const Categories: React.FC<CategoriesProps> = ({
             <SubTitle>{countAllToDoTasks} Não feita(s)</SubTitle>
             <Cart style={{ backgroundColor: "#121214" }}>
               <CartLine
-                style={{ backgroundColor: "#F75555", width: "80%" }}
+                style={{
+                  backgroundColor: "#F75555",
+                  width: `${(countAllToDoTasks / countAllTasks) * 100}%`,
+                }}
               ></CartLine>
             </Cart>
           </Category>

@@ -12,11 +12,14 @@ export const Header: React.FC = () => {
     <Container>
       <MyLogo />
       <IconsGroup>
+        {/*
         <SearchIcon>
+            
           <TouchableOpacity>
             <MagnifyingGlass color="white" size={20} />
           </TouchableOpacity>
         </SearchIcon>
+        */}
         <TouchableOpacity>
           <Bell color="white" size={20} />
         </TouchableOpacity>

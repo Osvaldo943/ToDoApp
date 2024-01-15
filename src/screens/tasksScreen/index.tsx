@@ -25,8 +25,8 @@ import { TASK_PROPS } from "../../@types/task";
 
 export default function Tasks() {
   const [tasks, setTasks] = useState<TASK_PROPS[]>([]);
-  const [tasksDone, setTasksDone] = useState<TASK_PROPS[]>([]);
-  const [tasksToDo, setTasksToDo] = useState<TASK_PROPS[]>([]);
+  const [tasksDone, setTasksDone] = useState(0);
+  const [tasksToDo, setTasksToDo] = useState(0);
   const [loading, setLoading] = useState(false);
 
   const goToTasks = () => {};
@@ -38,8 +38,8 @@ export default function Tasks() {
       if (data) {
         console.log(data);
         setTasks(data);
-        setTasksDone(data?.filter((task) => task.status == true));
-        setTasksToDo(data?.filter((task) => task.status == false));
+        setTasksDone((data?.filter((task) => task.status == true)).length);
+        setTasksToDo(data?.filter((task) => task.status == false).length);
       }
     } catch (err) {
       console.log(err);
@@ -62,8 +62,8 @@ export default function Tasks() {
           <Container>
             <Categories
               countAllTasks={tasks.length}
-              countAllDoneTasks={tasksDone.length}
-              countAllToDoTasks={tasksToDo.length}
+              countAllDoneTasks={tasksDone}
+              countAllToDoTasks={tasksToDo}
             />
             <TaskList>
               <Title>Minhas tarefas</Title>
@@ -74,6 +74,7 @@ export default function Tasks() {
                     pos={index}
                     title={item.title}
                     status={item.status}
+                    onPress={fetchAllTasks}
                   />
                 ))}
               </ScrollView>
