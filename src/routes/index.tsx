@@ -5,7 +5,7 @@ import AppRoutes from "./app.routes";
 
 export function Routes() {
   return (
-    <View style={{ backgroundColor: "red", flex: 1 }}>
+    <View style={{ backgroundColor: "#000", flex: 1 }}>
       <NavigationContainer>
         <AppRoutes />
       </NavigationContainer>
