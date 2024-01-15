@@ -31,16 +31,18 @@ export default function Tasks() {
 
   async function fetchAllTasks() {
     try {
-      const data: TASK_PROPS[] = await TasksGetAll();
-      if (tasks) {
+      const data: TASK_PROPS[] = (await TasksGetAll()) || [];
+      if (data) {
+        console.log(data);
         setTasks(data);
-        setTasksDone(data?.filter((task) => (task.status = false)));
-        setTasksToDo(data?.filter((task) => (task.status = true)));
+        setTasksDone(data?.filter((task) => task.status == true));
+        setTasksToDo(data?.filter((task) => task.status == false));
       }
     } catch (err) {
       console.log(err);
     }
   }
+
   useFocusEffect(
     useCallback(() => {
       fetchAllTasks();

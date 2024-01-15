@@ -9,7 +9,7 @@ export async function taskCreate(newTask: any) {
 
     storedTasks?.push(newTask);
 
-    AsyncStorage.setItem(TASKS_COLLECTION, JSON.stringify(storedTasks));
+    await AsyncStorage.setItem(TASKS_COLLECTION, JSON.stringify(storedTasks));
   } catch (err) {
     console.log(err);
   }

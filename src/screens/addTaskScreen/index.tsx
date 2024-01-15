@@ -29,7 +29,7 @@ export default function AddTask() {
   };
 
   const handleAddTask = async () => {
-    await taskCreate({ status: false, title: title, description: description });
+    await taskCreate({ status: true, title: title, description: description });
     navigation.navigate("tasks");
   };
 

@@ -2,9 +2,9 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import Tasks from "../screens/tasks";
-import AddTask from "../screens/addTask";
-import TaskDetails from "../screens/taskDetails";
+import Tasks from "../screens/tasksScreen";
+import AddTask from "../screens/addTaskScreen";
+import TaskDetails from "../screens/taskDetailsScreen";
 
 const { Screen, Navigator } = createStackNavigator();
 

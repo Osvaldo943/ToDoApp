@@ -28,21 +28,19 @@ type RouteParams = {
 };
 
 import { TASK_PROPS } from "../../@types/task";
+import { EditOneTask } from "../../storage/tasks/taskEditOne";
+import { EditTaskStatus } from "../../storage/tasks/taskEditStatus";
 
 export default function TaskDetails() {
   const route = useRoute();
+  const { idTask } = route.params as RouteParams;
 
+  const [tasks, setTasks] = useState<TASK_PROPS[]>([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
   const [isEditing, setIsEditing] = useState(false);
   const [checked, setChecked] = useState(false);
-
-  const { idTask } = route.params as RouteParams;
-
-  const handleEditPress = () => {
-    setIsEditing(!isEditing);
-  };
 
   const handleTitle = (text: string) => {
     setTitle(text);
@@ -51,12 +49,35 @@ export default function TaskDetails() {
     setDescription(text);
   };
 
+  useFocusEffect(
+    useCallback(() => {
+      setChecked(false);
+    }, [])
+  );
+  const handleCheck = async () => {
+    setChecked(!checked);
+    await EditTaskStatus(idTask, checked);
+    console.log("Trocando de status");
+  };
+  const handleEditPress = () => {
+    setIsEditing(!isEditing);
+  };
+
+  const handleEditTask = async () => {
+    const task: TASK_PROPS = {
+      description: description,
+      status: checked,
+      title: title,
+    };
+    await EditOneTask(idTask, task);
+    setIsEditing(false);
+  };
+
   async function fetchAllTasks() {
     try {
-      const data: TASK_PROPS[] = await TasksGetAll();
+      const data: TASK_PROPS[] = (await TasksGetAll()) || [];
 
-      if (data) {
-        console.log("tarefas em detalhes", data);
+      if (data !== undefined) {
         setTitle(data[idTask].title);
         setDescription(data[idTask].description);
         setChecked(data[idTask].status);
@@ -80,7 +101,7 @@ export default function TaskDetails() {
           <Row>
             <CheckBox
               checked={checked}
-              onPress={() => setChecked(!checked)}
+              onPress={handleCheck}
               checkedColor="#FF9900"
               containerStyle={{
                 backgroundColor: "transparent",
@@ -93,7 +114,7 @@ export default function TaskDetails() {
                 textDecorationLine: checked ? "line-through" : "none",
               }}
             >
-              {checked ? "Feito" : "Fazer"} {idTask}
+              {checked ? "Tarefa Nº" : "Tarefa Nº"} {idTask}
             </StatusText>
           </Row>
           <Row>
@@ -142,7 +163,7 @@ export default function TaskDetails() {
         </View>
         {isEditing && (
           <BtnContainer>
-            <TouchableOpacity onPress={handleEditPress}>
+            <TouchableOpacity onPress={handleEditTask}>
               <Button
                 style={{
                   backgroundColor:
